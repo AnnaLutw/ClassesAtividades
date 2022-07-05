@@ -1,0 +1,79 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Eletrodomestico {
+	private String nomeLoja;
+	private double preco;
+	private String numero;
+	
+	public Eletrodomestico(String [] info){
+		nomeLoja = info[0];
+		preco = Double.parseDouble(info[1]);
+		numero = info[2];
+	}
+	public double getPreco() {
+		return preco;
+	}
+	public String getNomeLoja() {
+		return nomeLoja;
+	}
+	public String getNumero() {
+		return numero;
+	}
+}
+	
+public class ativi3 {
+	public static double media (Eletrodomestico[]dados) {
+		double conta=0;
+		
+		for(int i=0;i < dados.length;i++) {
+			conta += dados[i].getPreco();
+		}
+			conta/=15;
+			return conta;
+	}
+	public static void main(String[] args)  {
+		Scanner ent = new Scanner(System.in);
+		double conta;
+		String arquivoNome;
+		Eletrodomestico[] dados = new Eletrodomestico[15];
+		int i=0;
+		//File arq = new File("c\\temp\\dados.txt");
+
+		try {
+			File arq = new File("C:\\aaaa\\dados.txt");
+			Scanner ler = new Scanner(arq);
+
+			while (ler.hasNextLine()) {
+				String linha=ler.nextLine();
+				String [] info = linha.split(";");
+				dados[i]=new Eletrodomestico(info);
+				i++;
+			}
+
+			ler.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Inválido.");
+		}
+		
+		conta=media(dados);
+		System.out.println("Qual o nome do arquivo? ");
+		arquivoNome = ent.nextLine();
+		try {
+			FileWriter arquivo = new FileWriter("C:\\temp\\"+ arquivoNome+".txt");
+			for(int j = 0;j < 15; j++) {
+				if(dados[j].getPreco()< conta) {
+					arquivo.write(dados[j].getNomeLoja()+ "\n" + dados[j].getPreco()+ "\n" + dados[j].getNumero()  );
+				}
+			}
+
+			arquivo.close();
+			ent.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}

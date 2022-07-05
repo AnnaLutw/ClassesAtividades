@@ -1,0 +1,33 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Eletrodomenstico{
+	
+	
+}
+
+public class ativi3 {
+
+	public static void main(String[] args) {
+		Scanner ent = new Scanner(System.in);
+
+		Eletrodomenstico[] dados = new Eletrodomenstico[15];
+
+	try {
+		File arq = new File ("c\\temp\\dados.txt");
+		Scanner ler = new Scanner(arq);
+
+		while(ler.hasNext()) {
+			
+		
+	}
+	} catch (IOException e) {
+		System.out.println("Inválido.");
+	}
+		}
+	}
+
+
+

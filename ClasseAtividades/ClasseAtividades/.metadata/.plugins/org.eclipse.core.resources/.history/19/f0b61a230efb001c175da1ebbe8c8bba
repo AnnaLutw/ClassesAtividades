@@ -1,0 +1,94 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Pessoa2 {
+	private String nome, mes;
+	private int dia;
+
+	public Pessoa2(String nome, String mes, int dia) {
+		this.setNome(nome);
+		this.setMes(mes);
+		this.setDia(dia);
+	}
+
+	public String getNome(String nome) {
+		return nome;
+	}
+
+	public String getMes(String mes) {
+		return mes;
+	}
+
+	public int getDia(int dia) {
+		return dia;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getMes() {
+		return mes;
+	}
+
+	public void setMes(String mes) {
+		this.mes = mes;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+	
+}
+
+public class ativi2 {
+	public static void main(String[] args) {
+		Scanner ent = new Scanner(System.in);
+		Pessoa2[] info = new Pessoa2[10];
+		String nomeArq, nome = null, mes = null;
+		String[] meses = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
+				"Outubro", "Novembro", "Dezembro" };
+		int dia = 0;
+		System.out.println("Nome do arquivo: ");
+		nomeArq = ent.nextLine();
+		try {
+			FileWriter arq = new FileWriter("c:\\temp\\" + nomeArq + ".txt");
+
+		for (int i = 0; i <= 10; i++) {
+			
+				
+				System.out.println("Nome: ");
+				nome = ent.nextLine();
+
+				System.out.println("Mês");
+				mes = ent.nextLine();
+
+				System.out.println("Dia");
+				dia = ent.nextInt();
+
+				for (int pos = 0; pos < meses.length; pos++) {
+					info[i] = new Pessoa2(nome, mes, dia);
+
+					if (mes.equals(meses[i])) {
+						arq.write(meses[i] + " " + dia + " " + nome);
+					}
+
+				}
+				arq.close();
+				ent.close();
+			} catch (IOException e) {
+				System.out.println("Inválido.");
+			}
+		}
+	}
+}

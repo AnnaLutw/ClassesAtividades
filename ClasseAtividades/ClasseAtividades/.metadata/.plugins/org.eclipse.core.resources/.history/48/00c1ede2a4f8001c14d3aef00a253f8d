@@ -1,0 +1,39 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Eletrodomestico {
+	private String nomeLoja;
+	private double preco;
+	private int numero;
+	
+	public Eletrodomestico(){
+		
+	}
+	
+}
+
+public class ativi3 {
+
+	public static void main(String[] args) {
+		Scanner ent = new Scanner(System.in);
+
+		Eletrodomestico[] dados = new Eletrodomestico[15];
+		int i=0;
+		try {
+			File arq = new File("c\\temp\\dados.txt");
+			Scanner ler = new Scanner(arq);
+
+			while (ler.hasNext()) {
+				String linha=ler.nextLine();
+				String [] info = linha.split(";");
+				dados[i]=new Eletrodomestico(info);
+				
+			}
+			
+		} catch (IOException e) {
+			System.out.println("Inválido.");
+		}
+	}
+}

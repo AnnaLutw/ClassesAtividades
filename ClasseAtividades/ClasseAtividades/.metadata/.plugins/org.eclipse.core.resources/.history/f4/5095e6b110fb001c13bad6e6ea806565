@@ -1,0 +1,65 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Pessoa2 {
+	Scanner ler = new Scanner(System.in);
+	private String nome, mes;
+	private int dia;
+
+	public Pessoa2(String nome, String mes, int dia) {
+		this.nome = nome;
+		this.mes = mes;
+		this.dia = dia;
+
+	}
+	public String getNome(String nome) {
+		return nome;
+	}
+	public String getMes(String mes) {
+		return mes;
+	}
+	public int getDia(int dia) {
+		return dia;
+	}
+	public String getNome() {
+		return nome;
+	}
+}
+
+public class ativi2 {
+	public static void main(String[] args) {
+		Scanner ent = new Scanner(System.in);
+		Pessoa2[] info = new Pessoa2[10];
+		String nomeArq, nome = null, mes = null;
+		String[] meses = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
+				"Outubro", "Novembro", "Dezembro" };
+		int dia = 0;
+
+		try {
+			System.out.println("Nome do arquivo: ");
+			nomeArq = ent.nextLine();
+			FileWriter arq = new FileWriter("c:\\temp\\" + nomeArq + ".txt");
+		} catch (IOException e) {
+			System.out.println("Inválido.");
+		}
+		for(int i=0;i<10;i++){
+			
+			System.out.println("Nome: ");
+			nome = ent.nextLine();
+
+			System.out.println("Mês");
+			mes = ent.nextLine();
+
+			System.out.println("Dia");
+			dia = ent.nextInt();
+		}
+				arq.write("Janeiro" +"Fevereiro" +"Março" +"Abril" +"Maio"+ "Junho"+ "Julho"+ "Agosto"+ "Setembro"+
+						"Outubro"+ "Novembro"+ "Dezembro");
+			
+			arq.close();
+			ent.close();
+		
+	}
+}

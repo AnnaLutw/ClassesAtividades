@@ -1,0 +1,130 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Pessoa2 {
+	Scanner ler = new Scanner(System.in);
+	private String nome, mes;
+	private int dia;
+	
+	public Pessoa2(String nome, String mes, int dia) {
+		this.nome = nome;
+		this.mes = mes;
+		this.dia = dia;
+	}
+
+	public String getNome(String nome) {
+		return nome;
+	}
+
+	public String getMes(String mes) {
+		return mes;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	@Override
+	public String toString() {
+		return "nome: " + nome + ", dia: " + dia + "\n";
+	}
+	
+	
+}
+
+public class ativi2 {
+	public static void main(String[] args) {
+		Scanner ent = new Scanner(System.in);
+		Pessoa2[] info = new Pessoa2[10];
+		String nomeArq, nome = null, mes = null;
+		String[] meses = { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro",
+				"Outubro", "Novembro", "Dezembro" };
+
+		int dia = 0;
+
+		try {
+			System.out.println("Nome do arquivo: ");
+			nomeArq = ent.nextLine();
+			FileWriter arq = new FileWriter("c:\\temp\\" + nomeArq + ".txt");
+			
+			for(int i=0;i<10;i++){
+				System.out.println("Nome: ");
+				nome =ent.nextLine();
+
+				System.out.println("Mês");
+				mes = ent.nextLine();
+				
+				System.out.println("Dia");
+				dia = ent.nextInt();
+				ent.nextLine();
+
+				//dia =  i; //ent.nextInt();
+
+				info[i] = new Pessoa2(nome, mes, dia);
+				
+			}
+			
+			for(int i=0;i<info.length;i++){
+				meses[getIndiceMes(info[i].getMes(mes))] = meses[getIndiceMes(info[i].getMes(mes))] + info[i].getNome() +" "+ " dia " + info[i].getDia();
+			}
+			
+			for(int j=0;j<meses.length; j++) {
+				arq.write(meses[j] + "\n");
+
+			}
+			
+			ent.close();
+			arq.close();
+		} catch (IOException e) {
+			System.out.println("Inválido.");
+		}
+		
+	}
+	
+	private static int getIndiceMes(String mes) {
+		switch (mes) {
+			case "Janeiro": {
+				return 0;
+			}
+			case "Fevereiro": {
+				return 1;
+			}
+			case "Março": {
+				return 2;
+			}
+			case "Abril": {
+				return 3;
+			}
+			case "Maio": {
+				return 4;
+			}
+			case "Junho": {
+				return 5;
+			}
+			case "Julho": {
+				return 6;
+			}
+			case "Agosto": {
+				return 7;
+			}
+			case "Setembro": {
+				return 8;
+			}
+			case "Outubro": {
+				return 9;
+			}	
+			case "Novembro": {
+				return 10;
+			}
+			default : {
+				return 11;
+			}
+		}
+	}
+}

@@ -1,0 +1,126 @@
+package atividadeClasses;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Pessoa {
+	//declarei as variaveis
+	private String nome, endereco, complemento;
+	private int codigo, idade, numero;
+	//chamei
+	public Pessoa(String nome, int idade, int codigo, int numero, String endereco, String complemento) {
+		this.nome=nome;
+		this.idade=idade;
+		this.codigo=codigo;
+		this.numero=numero;
+		this.endereco=endereco;
+		this.complemento=complemento;
+	}
+
+	
+	//set e get para todas as informações e chamei no main
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+	public int getIdade() {
+		return idade;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	int getCodigo() {
+		return codigo;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+	int getNumero() {
+		return numero;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	String getEndereco() {
+		return endereco;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+	String getComplemento() {
+		return complemento;
+	}
+
+
+}
+
+public class ativi1 {
+
+	public static void main(String[] args) {
+		Scanner ent = new Scanner(System.in);
+		//declarei o vetor
+		Pessoa[] pessoas = new Pessoa[50];
+
+		//declarei as variaveis
+			int p, codigo, numero, idade;
+			String nome, endereco, complemento, arquivoNome;
+			//pedi quantidade de pessoas
+			System.out.println("Quantas pessoas");
+			p = ent.nextInt();
+			ent.nextLine();
+			//for para todas as perguntas
+			for (int i = 0; i < p; i++) {
+				//pedi o nome do arquivo
+				System.out.println("Qual o nome do arquivo? ");
+				arquivoNome = ent.nextLine();
+			try {	
+				//declarei o diretorio 
+				FileWriter arq = new FileWriter("c:\\temp\\" + arquivoNome+".txt");
+				//pedi as informações
+				System.out.println("nome: ");
+				nome = ent.nextLine();
+
+				System.out.println("Endereço: ");
+				endereco = ent.nextLine();
+
+				System.out.println("Codigo: ");
+				codigo = ent.nextInt();
+				ent.nextLine();
+
+				System.out.println("Idade: ");
+				idade = ent.nextInt();
+				ent.nextLine();
+
+				System.out.println("Numero: ");
+				numero = ent.nextInt();
+				ent.nextLine();
+				
+				System.out.println("Complemento: ");
+				complemento = ent.nextLine();
+				
+				pessoas[i] = new Pessoa(nome, idade, codigo, numero, endereco, complemento);
+
+				//passei os dados para o arquivo				
+				arq.write("Nome: " + pessoas[i].getNome()+ "\n");
+				arq.write("Idade: " +pessoas[i].getIdade()+ "\n");
+				arq.write("codigo: " +pessoas[i].getCodigo()+ "\n");
+				arq.write("numero: " +pessoas[i].getNumero()+ "\n");
+				arq.write("Endereco: " +pessoas[i].getEndereco()+ "\n");
+				arq.write("Complemento: " +pessoas[i].getComplemento());
+
+				
+				arq.close();
+			}
+			catch (IOException e) {
+			    System.out.println("Inválido.");
+			}
+			ent.close();
+			}
+	}
+}

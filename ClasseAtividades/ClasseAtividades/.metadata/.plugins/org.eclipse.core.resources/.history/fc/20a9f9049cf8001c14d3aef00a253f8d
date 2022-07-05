@@ -1,0 +1,16 @@
+package atividadeClasses;
+
+class Eletrodomenstico{
+	
+	
+}
+
+public class ativi3 {
+
+	public static void main(String[] args) {
+		Eletrodomenstico[] dados = new Eletrodomenstico[10];
+		
+
+	}
+
+}
